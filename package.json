@@ -1,0 +1,35 @@
+{
+  "name": "node-postgres-geolite",
+  "version": "0.0.2",
+  "engines": {
+    "node": "6.0.0"
+  },
+  "description": "MaxMind Geolite Importer & Interface",
+  "main": "index.js",
+  "keywords": [
+    "ipv6",
+    "ipv4",
+    "geolite",
+    "geolite2",
+    "importer",
+    "postgres",
+    "postgresql"
+  ],
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./tests/functionality.js",
+    "test": "npm run lint"
+  },
+  "author": "Caleb Blankemeyer <caleb@blankemeyer.us>",
+  "dependencies": {
+    "pg-promise": "^5.6.4",
+    "csv": "^1.1.1",
+    "download": "^5.0.3",
+    "delete": "^0.3.2",
+    "joi": "^10.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.0",
+    "eslint-config-airbnb-base": "^5.0.1",
+    "eslint-plugin-import": "^1.12.0"
+  }
+}
