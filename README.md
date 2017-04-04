@@ -2,7 +2,7 @@
 
 MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.
 
-This Node.js module will allow you to import the GeoIP2 and Geolite Legacy ASN information into a PostgreSQL and then query it in your application using the provided interface.
+This Node.js module will allow you to import the GeoIP2 and Geolite Legacy ASN information into a PostgreSQL Database and then query it in your application using the provided interface.
 
 ## NOTICE
 

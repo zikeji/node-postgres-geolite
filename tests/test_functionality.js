@@ -28,12 +28,14 @@ describe('Initialization', function () {
           assert(true);
         });
       });
+      /*
       describe('Update', function() {
         this.timeout(60000);
         it('Run update (reinitialize data from MaxMind)', function(done) {
           geoliteDB.update().then(() => done()).catch(done);
         });
-      })
+      });
+      */
     })).catch((done));
   });
 

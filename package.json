@@ -52,7 +52,7 @@
     "LICENSE.md"
   ],
   "dependencies": {
-    "byline": "^5.0.0",
+    "csv-streamify": "^3.0.4",
     "delete": "^0.3.2",
     "download": "^5.0.3",
     "ip": "^1.1.5",
