@@ -1,4 +1,4 @@
-#node-postgres-geolite [![Build Status](https://travis-ci.org/zikeji/node-postgres-geolite.svg?branch=master)](https://travis-ci.org/zikeji/node-postgres-geolite)
+# node-postgres-geolite [![Build Status](https://travis-ci.org/zikeji/node-postgres-geolite.svg?branch=master)](https://travis-ci.org/zikeji/node-postgres-geolite)
 
 MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.
 
