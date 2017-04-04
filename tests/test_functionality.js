@@ -6,7 +6,7 @@ const geolite = require('../index.js');
 describe('Initialization', function () {
 
   it('Connect to database & initialize tables with GeoLite Legacy & GeoLite2 data if necessary', function (done) {
-    this.timeout(60000);
+    this.timeout(5 * 60 * 1000);
 
     geolite.init({
       database: {

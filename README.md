@@ -8,10 +8,27 @@ This Node.js module will allow you to import the GeoIP2 and Geolite Legacy ASN i
 
 This module is in pre-pre-pre alpha and is not ready for use!
 
+## Requirements
+
+- PostgreSQL >= 9.4
+
 ## Install
 ```
 $ npm install --save postgres-geolite
 ```
+
+## Performance
+
+### Initializing & updating the database
+
+**System:** Intel Core i5 6600K running Windows 10 with the PostgreSQL DB on a SATA 6Gbps SSD
+**Result:** ~90 second build times
+
+You can also refer to the tests on Travis-CI for performance.
+
+### Queries
+
+Thanks to the built in operator class GiST [inet_ops](https://www.postgresql.org/docs/current/static/gist-builtin-opclasses.html), queries take ~30ms on my test system. The test cases ran on Travis-CI can also give you an idea of expected performance on systems with their infrastructure.
 
 ## Usage
 
