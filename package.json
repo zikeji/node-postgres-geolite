@@ -1,5 +1,5 @@
 {
-  "name": "node-postgres-geolite",
+  "name": "postgres-geolite",
   "version": "0.0.3",
   "description": "MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.",
   "license": "MIT",
