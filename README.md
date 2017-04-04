@@ -22,7 +22,9 @@ $ npm install --save postgres-geolite
 ### Initializing & updating the database
 
 **System:** Intel Core i5 6600K running Windows 10 with the PostgreSQL DB on a SATA 6Gbps SSD
-**Result:** ~90 second build times
+**Result:** ~11 second build times (once full testing is done I'll be getting a larger sample for build times and possible a second system)
+
+Building gets done on secondary tables, and when complete the original table gets dropped and replaced with the new one. This is what I considered the best approach for minimizing potential downtime during an update.
 
 You can also refer to the tests on Travis-CI for performance.
 
@@ -33,7 +35,7 @@ Thanks to the built in operator class GiST [inet_ops](https://www.postgresql.org
 ## Usage
 
 GeoLite2 City: https://dev.maxmind.com/geoip/geoip2/geolite2/
-GeoLite ASN / IPv6: https://dev.maxmind.com/geoip/legacy/geolite/
+GeoLite ASN IPv4 + IPv6: https://dev.maxmind.com/geoip/legacy/geolite/
 
 set config
 
