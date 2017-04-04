@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "camelcase": 0,
+    "max-len": 0,
+    "new-cap": 0,
+    "strict": 0,
+    "global-require": 0,
+    "no-unused-vars": 1,
+    "no-param-reassign": 0,
+    "no-mixed-operators": 1,
+    "newline-per-chained-call": 0,
+    "eol-last": 0,
+    "no-underscore-dangle": 0,
+    "no-shadow": [2, {
+      "allow": ["err"]
+    }]
+  }
+}

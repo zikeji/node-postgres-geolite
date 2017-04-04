@@ -1,0 +1,16 @@
+logs
+npm-debug.log*
+
+pids
+*.pid
+*.seed
+
+build/Release
+
+node_modules
+
+node_*.tmp
+
+config.js
+
+tmp

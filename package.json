@@ -1,11 +1,20 @@
 {
   "name": "node-postgres-geolite",
-  "version": "0.0.2",
-  "engines": {
-    "node": "6.0.0"
+  "version": "0.0.3",
+  "description": "MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.",
+  "license": "MIT",
+  "homepage": "https://github.com/zikeji/node-postgres-geolite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zikeji/node-postgres-geolite.git"
   },
-  "description": "MaxMind Geolite Importer & Interface",
+  "bugs": {
+    "url": "https://github.com/zikeji/node-postgres-geolite/issues"
+  },
   "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "keywords": [
     "ipv6",
     "ipv4",
@@ -13,19 +22,41 @@
     "geolite2",
     "importer",
     "postgres",
-    "postgresql"
+    "postgresql",
+    "country",
+    "city",
+    "geolocation",
+    "geolocation lookup",
+    "geo",
+    "geo ip",
+    "promises",
+    "GeoIP2 Lite",
+    "GeoIP Legacy",
+    "isp lookup",
+    "asn lookup"
   ],
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./tests/functionality.js",
     "test": "npm run lint"
   },
-  "author": "Caleb Blankemeyer <caleb@blankemeyer.us>",
+  "author": {
+    "name": "Caleb Blankemeyer",
+    "email": "caleb@blankemeyer.us",
+    "url": "https://github.com/zikeji"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "README.md",
+    "LICENSE.md"
+  ],
   "dependencies": {
-    "pg-promise": "^5.6.4",
-    "csv": "^1.1.1",
-    "download": "^5.0.3",
+    "byline": "^5.0.0",
     "delete": "^0.3.2",
-    "joi": "^10.3.4"
+    "download": "^5.0.3",
+    "ip": "^1.1.5",
+    "joi": "^10.3.4",
+    "pg-promise": "^5.6.4"
   },
   "devDependencies": {
     "eslint": "^3.2.0",
