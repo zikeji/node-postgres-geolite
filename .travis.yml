@@ -3,6 +3,8 @@ node_js:
   - 6
 services:
   - postgresql
+addons:
+  postgresql: "9.6"
 install: npm install
 before_script:
   - psql -c 'create database geolite;' -U postgres
