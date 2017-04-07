@@ -1,12 +1,30 @@
 # node-postgres-geolite [![npm version](https://badge.fury.io/js/postgres-geolite.svg)](https://badge.fury.io/js/postgres-geolite) [![Build Status](https://travis-ci.org/zikeji/node-postgres-geolite.svg?branch=master)](https://travis-ci.org/zikeji/node-postgres-geolite)
 
-MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.
+MaxMind Geolite PostgreSQL importer & interface to provide IPv4 and IPv6 lookups for country, subdivisions, city, timezone, area code, ISP, etc. This module is designed to import the GeoIP2 and Geolite Legacy database CSVs into a PostgreSQL database and query it efficiently and effectively.
 
-This Node.js module will allow you to import the GeoIP2 and Geolite Legacy ASN information into a PostgreSQL Database and then query it in your application using the provided interface.
+#### Apologies
+
+I had originally wanted to return the data similar to the [node-maxmind](https://github.com/runk/node-maxmind) project, thus allowing this module to server as a drop-in replacement. Unfortunately I was unable to figure out how to best map the geoname ID data in the database to allow for geoname_ids on each location type (continent, country, subdivisions, city). If you are able to do this, feel free to fork and submit a PR. Otherwise if you have ideas on doing this feel free to contact me to discuss.
+
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Install](#install)
+- [Usage](#usage)
+- [API](#api)
+- [Performance](#performance)
+  - [Initializing & updating the database](#initializing--updating-the-database)
+  - [Queries](#queries)
+- [License](#license)
 
 ## NOTICE
 
 This module is in pre-pre-pre alpha and is not ready for use!
+
+### TODO
+
+- geolite geoname_id importing
+- API for queries
 
 ## Requirements
 
@@ -17,7 +35,61 @@ This module is in pre-pre-pre alpha and is not ready for use!
 $ npm install --save postgres-geolite
 ```
 
+## Usage
+
+**TODO**
+
+## API
+
+### `geolite.init(options)`
+
+Checks whether the database in PostgreSQL has been initialized, and validates the schema with the current version of this module. If the database is ready, it returns the geoliteDB object in the promise. Otherwise, it updates the PostgreSQL database using the options provided.
+
+#### Object: `options`
+
+If the options provided don't get properly validated by [Joi](https://github.com/hapijs/joi), then an error is returned and can be caught via the reject promise. Validation schema can be found [here](https://github.com/zikeji/node-postgres-geolite/blob/master/lib/configvalidator/index.js).
+
+```javascript
+{
+  database: object,
+  downloads: object,
+}
+```
+
+##### Object: `database`
+
+Takes the [configuration object](https://github.com/vitaly-t/pg-promise/wiki/Connection-Syntax#configuration-object) from [pg-promise](https://github.com/vitaly-t/pg-promise) with most of the properties.
+
+##### Object: `downloads`
+
+- **(string)** `location`: relative or absolute path to where the GeoLite databases get downloaded to or obtained from.
+  - **default**: `'./tmp'`
+- **(boolean)** `cleanup`: the location folder above will be created if it doesn't exist, if cleanup is set to true it will delete the location folder once it is no longer necessary.
+  - **default**: `false`
+- **(boolean)** `local`: if set to true, the resources below are interpreted as filepaths and compressed to the location specified above.
+  - **default**: `false`
+- **(object)** `resources`
+  - **(string)** `geolite2_city`: direct download link or filepath for the GeoLite2 City database in CSV format, zipped.
+    - https://dev.maxmind.com/geoip/geoip2/geolite2/
+  - **(string)** `geolite_asn`: direct download link or filepath for the GeoLite ASN database in CSV / zip format.
+  - **(string)** `geolite_asn_ipv6`: direct download link or filepath for the GeoLite ASN database in CSV / zip format.
+    - https://dev.maxmind.com/geoip/legacy/geolite/
+
+#### Returns: `Promise (geoliteDB)`
+
+Promise that contains the object used for all future API calls.
+
+### `geoliteDB.update()`
+
+Forces an update on the PostgreSQL database using the options provided in `geolite.init`.
+
+#### Returns: `Promise ()`
+
+Resolves when finished, if any error occurs it rejects.
+
 ## Performance
+
+If you clone the repo and run the tests on your target system you should get a good idea of expected performance from the test results.
 
 ### Initializing & updating the database
 
@@ -31,21 +103,6 @@ You can also refer to the tests on Travis-CI for performance.
 ### Queries
 
 Thanks to the built in operator class GiST [inet_ops](https://www.postgresql.org/docs/current/static/gist-builtin-opclasses.html), queries take ~30ms on my test system. The test cases ran on Travis-CI can also give you an idea of expected performance on systems with their infrastructure.
-
-## Usage
-
-GeoLite2 City: https://dev.maxmind.com/geoip/geoip2/geolite2/
-GeoLite ASN IPv4 + IPv6: https://dev.maxmind.com/geoip/legacy/geolite/
-
-set config
-
-geolite.init = geoliteDB
-if the DB has not be initialized, it will download the CSVs and import them as well as create the relevant tables, otherwise no operation will be performed
-
-geoliteDB.update
-downloads the CSVs and updates the database with any new information, should be run once a month or so
-
-## API
 
 ## License
 
