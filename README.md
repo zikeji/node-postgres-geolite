@@ -12,6 +12,8 @@ I had originally wanted to return the data similar to the [node-maxmind](https:/
 - [Install](#install)
 - [Usage](#usage)
 - [API](#api)
+  - [geolite.init(options)](#geoliteinitoptions)
+  - [geoliteDB.update()](#geolitedbupdate)
 - [Performance](#performance)
   - [Initializing & updating the database](#initializing--updating-the-database)
   - [Queries](#queries)
@@ -62,11 +64,11 @@ Takes the [configuration object](https://github.com/vitaly-t/pg-promise/wiki/Con
 
 ##### Object: `downloads`
 
-- **(string)** `location`: relative or absolute path to where the GeoLite databases get downloaded to or obtained from.
+- **(string)** `location`: relative or absolute path to where the GeoLite databases get downloaded (if `local` is false) and decompressed to.
   - **default**: `'./tmp'`
 - **(boolean)** `cleanup`: the location folder above will be created if it doesn't exist, if cleanup is set to true it will delete the location folder once it is no longer necessary.
   - **default**: `false`
-- **(boolean)** `local`: if set to true, the resources below are interpreted as filepaths and compressed to the location specified above.
+- **(boolean)** `local`: if set to true, the resources below are interpreted as filepaths and decompressed to the location specified above.
   - **default**: `false`
 - **(object)** `resources`
   - **(string)** `geolite2_city`: direct download link or filepath for the GeoLite2 City database in CSV format, zipped.
@@ -94,7 +96,7 @@ If you clone the repo and run the tests on your target system you should get a g
 ### Initializing & updating the database
 
 - **System:** Intel Core i5 6600K running Windows 10 with the PostgreSQL DB on a SATA 6Gbps SSD
- - **Result:** ~11 second build times (once full testing is done I'll be getting a larger sample for build times and possible a second system)
+  - **Result:** (complete imports incomplete, no result available at this time)
 
 Building gets done on secondary tables, and when complete the original table gets dropped and replaced with the new one. This is what I considered the best approach for minimizing potential downtime during an update.
 
