@@ -14,22 +14,16 @@ I had originally wanted to return the data similar to the [node-maxmind](https:/
 - [API](#api)
   - [geolite.init(options)](#geoliteinitoptions)
   - [geoliteDB.update()](#geolitedbupdate)
+  - [geoliteDB.get(ip)](#geolitedbgetip)
 - [Performance](#performance)
   - [Initializing & updating the database](#initializing--updating-the-database)
   - [Queries](#queries)
 - [License](#license)
 
-## NOTICE
-
-This module is in pre-pre-pre alpha and is not ready for use!
-
-### TODO
-
-- geolite geoname_id importing
-- API for queries
-
 ## Requirements
 
+- 1GB RAM
+  - This is the for the build process only, if you plan on building & updating a different machine you can still utilize this on a machine with less RAM.
 - PostgreSQL >= 9.4
 
 ## Install
@@ -88,6 +82,101 @@ Forces an update on the PostgreSQL database using the options provided in `geoli
 #### Returns: `Promise ()`
 
 Resolves when finished, if any error occurs it rejects.
+
+### `geoliteDB.get(ip)`
+
+Gets all the information available on the provided IP.
+
+#### String: `ip`
+
+The IPv4 address or IPv6 address you are querying, as a string.
+
+#### Returns: `Promise (result)`
+
+The resulting lookup data from you query.
+
+##### Example
+
+```json
+{
+  "city":{
+    "names":{
+      "de":"Mountain View",
+      "en":"Mountain View",
+      "fr":"Mountain View",
+      "ja":"マウンテンビュー",
+      "ru":"Маунтин-Вью",
+      "zh-CN":"芒廷维尤"
+    }
+  },
+  "continent":{
+    "code":"NA",
+    "names":{
+      "de":"Nordamerika",
+      "en":"North America",
+      "es":"Norteamérica",
+      "fr":"Amérique du Nord",
+      "ja":"北アメリカ",
+      "pt-BR":"América do Norte",
+      "ru":"Северная Америка",
+      "zh-CN":"北美洲"
+    }
+  },
+  "country":{
+    "iso_code":"US",
+    "names":{
+      "de":"USA",
+      "en":"United States",
+      "es":"Estados Unidos",
+      "fr":"États-Unis",
+      "ja":"アメリカ合衆国",
+      "pt-BR":"Estados Unidos",
+      "ru":"США",
+      "zh-CN":"美国"
+    }
+  },
+  "isp":{
+    "asn":"AS15169",
+    "org":"Google Inc."
+  },
+  "location":{
+    "latitude":"37.386",
+    "longitude":"-122.0838",
+    "time_zone":"America/Los_Angeles"
+  },
+  "postal":{
+    "code":"94035"
+  },
+  "registered_country":{
+    "iso_code":"US",
+    "names":{
+      "de":"USA",
+      "en":"United States",
+      "es":"Estados Unidos",
+      "fr":"États-Unis",
+      "ja":"アメリカ合衆国",
+      "pt-BR":"Estados Unidos",
+      "ru":"США",
+      "zh-CN":"美国"
+    }
+  },
+  "subdivisions":[
+    {
+      "iso_code":"CA",
+      "names":{
+        "de":"Kalifornien",
+        "en":"California",
+        "es":"California",
+        "fr":"Californie",
+        "ja":"カリフォルニア州",
+        "pt-BR":"Califórnia",
+        "ru":"Калифорния",
+        "zh-CN":"加利福尼亚州"
+      }
+    }
+  ]
+}
+```
 
 ## Performance
 
