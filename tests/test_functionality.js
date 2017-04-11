@@ -25,22 +25,23 @@ describe('Initialization', function () {
           geolite_asn_ipv6: 'http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum2v6.zip',
         }
       },
-    }).then((geoliteDB => {
+    }).then(geoliteDB => {
       done();
       describe('Test Module API', function () {
-        it('placeholder', function () {
+        it('placeholder', function (done) {
           assert(true);
+          done();
         });
       });
-      /*
-      describe('Update', function() {
-        this.timeout(60000);
-        it('Run update (reinitialize data from MaxMind)', function(done) {
+
+      /*describe('Update', function () {
+        this.timeout(5 * 60 * 1000);
+        it('Run update (reinitialize data from MaxMind)', function (done) {
           geoliteDB.update().then(() => done()).catch(done);
         });
-      });
-      */
-    })).catch((done));
+      });*/
+
+    }).catch((done));
   });
 
 });
