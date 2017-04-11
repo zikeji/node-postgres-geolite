@@ -1,6 +1,6 @@
 {
   "name": "postgres-geolite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MaxMind Geolite PostgreSQL importer & interface to provide lookups for country, city, timezone, area code, ISP, etc.",
   "license": "MIT",
   "homepage": "https://github.com/zikeji/node-postgres-geolite",
@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "lint": "eslint index.js lib",
-    "mocha": "mocha tests/* -s 0",
+    "mocha": "mocha -s 0 tests/*",
     "test": "npm run lint && npm run mocha"
   },
   "author": {
