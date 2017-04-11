@@ -33,8 +33,8 @@ describe('Initialization', function () {
             .then(function () {
               assert(false, 'should have failed but it didn\'t');
             })
-            .catch(function(rejected) {
-              assert.equal(rejected.error, 'invalid_ip');
+            .catch(function(error) {
+              assert.equal(error.name, 'InvalidIPError');
             });
         });
         
@@ -43,8 +43,8 @@ describe('Initialization', function () {
             .then(function () {
               assert(false, 'should have failed but it didn\'t');
             })
-            .catch(function(rejected) {
-              assert.equal(rejected.error, 'invalid_ip');
+            .catch(function(error) {
+              assert.equal(error.name, 'InvalidIPError');
             });
         });
 
@@ -53,8 +53,8 @@ describe('Initialization', function () {
             .then(function () {
               assert(false, 'should have failed but it didn\'t');
             })
-            .catch(function(rejected) {
-              assert.equal(rejected.error, 'invalid_ip');
+            .catch(function(error) {
+              assert.equal(error.name, 'InvalidIPError');
             });
         });
 
@@ -71,6 +71,23 @@ describe('Initialization', function () {
               assert.equal(result.isp.asn, 'AS15169');
             });
         });
+
+        const invalid_v4 = [0, 10, 100, 127, 169, 172, 192, 198, 203, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255];
+        const randIPv4 = () => {
+          const s = Math.floor(Math.random() * 255) + 1;
+          if (!invalid_v4.includes(s)) {
+              return `${s}.${Math.floor(Math.random() * 255) + 1}.${Math.floor(Math.random() * 255) + 1}.${Math.floor(Math.random() * 255) + 1}`;
+          }
+          return randIPv4();
+        };
+
+        for (let i =0; i < 100; i++) {
+          const iter_test = randIPv4();
+          it(`Query ${iter_test}`, function () {
+            return geoliteDB.get(iter_test)
+              .then().catch((error) => assert.equal(error.name, 'IPNotFoundError'));
+          });
+        }
       });
 
       // describe('Update', function () {

@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "lint": "eslint index.js lib",
-    "mocha": "mocha tests/*",
+    "mocha": "mocha tests/* -s 0",
     "test": "npm run lint && npm run mocha"
   },
   "author": {
