@@ -204,3 +204,7 @@ While I'm not technically including the data, I'm including the licensing discla
 >This product includes GeoLite2 data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com).
 
 >This product includes GeoLite data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com).
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/zikeji/node-postgres-geolite/badge.svg?style=beer-square)](https://beerpay.io/zikeji/node-postgres-geolite)  [![Beerpay](https://beerpay.io/zikeji/node-postgres-geolite/make-wish.svg?style=flat-square)](https://beerpay.io/zikeji/node-postgres-geolite?focus=wish)
